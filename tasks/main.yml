@@ -24,5 +24,7 @@
     - restart zookeeper
 
 - apt: name=supervisor state=present
-- template: src=supervisor-zookeeper.conf dest=/etc/supervisor/conf.d/zookeeper.conf
 - service: name=supervisor enabled=yes state=started
+- template: src=supervisor-zookeeper.conf dest=/etc/supervisor/conf.d/zookeeper.conf
+  notify:
+    - restart zookeeper
