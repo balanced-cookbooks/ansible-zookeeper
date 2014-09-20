@@ -10,6 +10,7 @@ install:
   # Install Ansible.
   - sudo apt-get install ansible -y
   - sudo sed -i -e's@#roles_path.*@roles_path=../@' /etc/ansible/ansible.cfg
+  - mkdir -p tests/roles/ansible-role-java && git clone https://github.com/vrischmann/ansible-role-java
 
 script:
   - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
