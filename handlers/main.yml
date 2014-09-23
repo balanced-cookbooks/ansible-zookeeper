@@ -1,0 +1,6 @@
+---
+- name: restart zookeeper
+  command: supervisorctl restart zookeeper
+
+- name: restart supervisor
+  command: service supervisor restart
