@@ -29,8 +29,8 @@
 - template: src=supervisor-zookeeper.conf dest=/etc/supervisor/conf.d/zookeeper.conf
   notify:
     - restart supervisor
-  ignore_errors: True
-  register: command_result
-
-- debug: msg="stdout {{ command_result }}"
-- shell: cat /var/log/zookeeper/std*.log
+#  ignore_errors: True
+#  register: command_result
+#
+#- debug: msg="stdout {{ command_result }}"
+#- shell: cat /var/log/zookeeper/std*.log
