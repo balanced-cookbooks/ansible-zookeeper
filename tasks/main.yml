@@ -34,7 +34,7 @@
 - shell: supervisorctl status
   sudo: yes
 
-- debug: msg="stdout {{ command_result }}"
+#- debug: msg="stdout {{ command_result }}"
 - shell: cat /var/log/supervisor/supervisord.log
 - shell: cat /var/log/zookeeper/stderr.log
 - shell: cat /var/log/zookeeper/stdout.log
