@@ -29,6 +29,7 @@
 - template: src=supervisor-zookeeper.conf dest=/etc/supervisor/conf.d/zookeeper.conf
   notify:
     - reread supervisor
+    - update supervisor
     - restart zookeeper
 
 - shell: supervisorctl status
