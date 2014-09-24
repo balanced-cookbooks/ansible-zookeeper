@@ -32,6 +32,5 @@
   ignore_errors: True
   register: command_result
 
-- debug: msg="stdout {{ command_result.stdout }}
-- debug: msg="stderr {{ command_result.stderr }}
+- debug: msg="stdout {{ command_result }}"
 - shell: cat /var/log/zookeeper/std*.log
