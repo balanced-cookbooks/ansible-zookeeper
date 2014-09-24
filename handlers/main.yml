@@ -3,4 +3,4 @@
   command: supervisorctl restart zookeeper
 
 - name: restart supervisor
-  command: service supervisor restart
+  service: name=supervisor state=restarted
