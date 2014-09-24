@@ -28,4 +28,5 @@
 - service: name=supervisor enabled=yes state=started
 - template: src=supervisor-zookeeper.conf dest=/etc/supervisor/conf.d/zookeeper.conf
   notify:
-    - restart supervisor
+    - stop supervisor
+    - start supervisor
