@@ -37,4 +37,7 @@
 #- debug: msg="stdout {{ command_result }}"
 - shell: cat /var/log/supervisor/supervisord.log
 - shell: cat /var/log/zookeeper/stderr.log
+  ignore_errors: True
 - shell: cat /var/log/zookeeper/stdout.log
+  ignore_errors: True
+- shell: ps aux | grep -i zoo
