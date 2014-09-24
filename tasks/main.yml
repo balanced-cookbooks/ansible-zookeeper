@@ -2,6 +2,7 @@
 - file: path=/opt/src state=directory
 - file: path=/opt/build state=directory
 - file: path=/etc/supervisor/conf.d state=directory
+- file: path=/var/log/zookeeper state=directory
 
 - group: name=zookeeper system=yes
 - user: name=zookeeper group=zookeeper system=yes
@@ -28,3 +29,9 @@
 - template: src=supervisor-zookeeper.conf dest=/etc/supervisor/conf.d/zookeeper.conf
   notify:
     - restart supervisor
+  ignore_errors: True
+  register: command_result
+
+- debug: msg="stdout {{ command_result.stdout }}
+- debug: msg="stderr {{ command_result.stderr }}
+- shell: cat /var/log/zookeeper/std*.log
