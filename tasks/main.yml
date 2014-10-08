@@ -14,13 +14,13 @@
 - group: name=zookeeper system=yes
 - user: name=zookeeper group=zookeeper system=yes
 
-- get_url: url=http://ftp.heanet.ie/mirrors/www.apache.org/dist/zookeeper/zookeeper-{{zookeeper.version}}/zookeeper-{{zookeeper.version}}.tar.gz
-           dest=/opt/src/zookeeper-{{zookeeper.version}}.tar.gz
-           sha256sum={{zookeeper.sha256sum}}
+- get_url: url={{  zookeeper.mirror  }}/zookeeper-{{ zookeeper.version }}/zookeeper-{{ zookeeper.version }}.tar.gz
+           dest=/opt/src/zookeeper-{{ zookeeper.version }}.tar.gz
+           sha256sum={{ zookeeper.sha256sum }}
 
-- command: chdir=/opt tar xzf /opt/src/zookeeper-{{zookeeper.version}}.tar.gz creates=/opt/zookeeper-{{zookeeper.version}}/bin/zkCli.sh
+- command: chdir=/opt tar xzf /opt/src/zookeeper-{{ zookeeper.version }}.tar.gz creates=/opt/zookeeper-{{ zookeeper.version }}/bin/zkCli.sh
 
-- file: path=/opt/zookeeper-{{zookeeper.version}} state=directory owner=zookeeper group=zookeeper recurse=yes
+- file: path=/opt/zookeeper-{{ zookeeper.version }} state=directory owner=zookeeper group=zookeeper recurse=yes
 - file: path=/var/lib/zookeeper state=directory owner=zookeeper group=zookeeper recurse=yes
 
 # force these to happen immediately
@@ -34,6 +34,6 @@
   notify:
     - restart zookeeper
 
-- template: src=zoo.cfg dest=/opt/zookeeper-{{zookeeper.version}}/conf/zoo.cfg
+- template: src=zoo.cfg dest=/opt/zookeeper-{{ zookeeper.version }}/conf/zoo.cfg
   notify:
     - restart zookeeper
